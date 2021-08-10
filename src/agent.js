@@ -3,7 +3,7 @@ import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-const API_ROOT = 'https://conduit.productionready.io/api';
+const API_ROOT = 'http://localhost:8000/api';
 
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
@@ -57,7 +57,7 @@ const Articles = {
   favoritedBy: (author, page) =>
     requests.get(`/articles?favorited=${encode(author)}&${limit(5, page)}`),
   feed: () =>
-    requests.get('/articles/feed?limit=10&offset=0'),
+    requests.get('/articles/feed/?limit=10&offset=0'),
   get: slug =>
     requests.get(`/articles/${slug}`),
   unfavorite: slug =>
